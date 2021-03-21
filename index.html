@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+
+</head>
+<body>
+    <h1>Enter Time in 12 hr format:</h1>
+    
+    <input style="max-width: 70px;" max="12" min="1" id="hr" type="number" placeholder="Hours">:
+    <input style="max-width: 70px;" max="59" min="0" id="mm" type="number" placeholder="Minutes">:
+    <input style="max-width: 70px;" max="59" min="0" id="se" type="number" placeholder="Seconds">
+    <input style="max-width: 70px;"  id="ap" type="text" placeholder="AM/PM">
+    <input type="submit" id="submit" >
+    <div id="result"></div>
+    <script >
+        let submit = document.getElementById("submit");
+        submit.addEventListener("click", () => {
+            let hr = parseInt(document.getElementById("hr").value);
+            let mm = parseInt(document.getElementById("mm").value);
+            let se = parseInt( document.getElementById("se").value);
+            let ap = document.getElementById("ap").value;
+            console.log(ap);
+            let rhr = 0, rmm = mm+45, rse = se+45;
+            if(ap=="AM" || ap=="am"){
+                if(hr==12)
+                    rhr = 0;
+                else
+                    rhr = hr;
+            }
+            else if(ap=="PM" || ap=="pm"){
+                if(hr==12)
+                    rhr = 12;
+                else
+                    rhr = hr + 12;
+            }
+            document.getElementById("result").innerHTML = "time = " +rhr+ ":" +rmm+ ":" +rse
+        })
+    </script>
+</body>
+</html>
